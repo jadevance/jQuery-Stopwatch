@@ -7,11 +7,13 @@ function StopWatch(callback) {
 
   //starts the watch
   this.start = function() {
+    if (this._interval) { return }
     this._interval = setInterval(this.addTime.bind(this), this._delay)
   }
   //stops the watch
   this.stop = function() {
     clearInterval(this._interval)
+    this._interval = null
   }
   // adds time to the counter
   this.addTime = function(){
